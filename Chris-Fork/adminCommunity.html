@@ -30,128 +30,36 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Community</h5>
-                <form id="eventForm">
+                <form id="communityForm">
                     <div class="form-group">
-                        <label for="eventName">Community Activities/Project</label>
-                        <input type="text" class="form-control" id="eventName" required>
+                        <label for="communityName">Community Activities/Project</label>
+                        <input type="text" class="form-control" id="communityName" required>
                     </div>
                     <div class="form-group">
-                        <label for="eventDetails">Community Details</label>
-                        <textarea class="form-control" id="eventDetails" rows="3" required></textarea>
+                        <label for="communityDetails">Community Details</label>
+                        <textarea class="form-control" id="communityDetails" rows="3" required></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="eventDate">Project Date</label>
-                        <input type="date" class="form-control" id="eventDate" required>
+                        <label for="communityDate">Project Date</label>
+                        <input type="date" class="form-control" id="communityDate" required>
                     </div>
                     <div class="form-group">
-                        <label for="eventPhoto">Community Photo</label>
-                        <input type="file" class="form-control-file" id="eventPhoto">
+                        <label for="communityPhoto">Community Photo</label>
+                        <input type="file" class="form-control-file" id="communityPhoto">
                     </div>
                     <div class="form-group">
-                        <label for="eventPlace">Activity Place/Address</label>
-                        <input type="text" class="form-control" id="eventPlace" required>
+                        <label for="communityPlace">Activity Place/Address</label>
+                        <input type="text" class="form-control" id="communityPlace" required>
                     </div>
-                    <button type="button" class="btn btn-primary" onclick="addEvent()">Submit</button>
+                    <button type="button" class="btn btn-primary" onclick="addCommunity()">Submit</button>
                 </form>
             </div>
         </div>
-        <div id="eventDisplay"></div>
+        <div id="communityDisplay"></div>
     </div>
     </div>
     </div>
-    <script>
-        const events = [];
-        function addEvent() {
-            const eventName = document.getElementById('eventName').value;
-            const eventDetails = document.getElementById('eventDetails').value;
-            const eventDate = document.getElementById('eventDate').value;
-            const eventPhoto = document.getElementById('eventPhoto').files[0];
-            const eventPlace = document.getElementById('eventPlace').value;
-
-            if (eventName && eventDetails && eventDate && eventPhoto && eventPlace) {
-                const reader = new FileReader();
-
-                reader.onload = function (e) {
-                    const newEvent = {
-                        name: eventName,
-                        details: eventDetails,
-                        date: eventDate,
-                        photo: e.target.result,
-                        place: eventPlace
-                    };
-
-                    events.push(newEvent);
-                    displayEvents();
-                    displayMap();
-                    resetForm();
-                };
-
-                reader.readAsDataURL(eventPhoto);
-            } else {
-                alert('Please enter event name, details, date, select a photo, and place/address.');
-            }
-        }
-        function displayEvents() {
-            const eventDisplay = document.getElementById('eventDisplay');
-            eventDisplay.innerHTML = '';
-
-            events.forEach((event, index) => {
-                const eventCard = document.createElement('div');
-                eventCard.classList.add('card', 'event-card');
-
-                const cardBody = document.createElement('div');
-                cardBody.classList.add('card-body');
-
-                const cardTitle = document.createElement('h5');
-                cardTitle.classList.add('card-title');
-                cardTitle.textContent = event.name;
-
-                const cardDetails = document.createElement('p');
-                cardDetails.classList.add('card-text');
-                cardDetails.textContent = event.details;
-
-                const cardDate = document.createElement('p');
-                cardDate.classList.add('card-text');
-                cardDate.textContent = `Date: ${event.date}`;
-
-                const cardPlace = document.createElement('p');
-                cardPlace.classList.add('card-text');
-                cardPlace.textContent = `Place: ${event.place}`;
-
-                const cardPhoto = document.createElement('img');
-                cardPhoto.classList.add('card-img-top', 'mt-2');
-                cardPhoto.src = event.photo;
-                cardPhoto.alt = event.name;
-
-                const removeButton = document.createElement('button');
-                removeButton.classList.add('btn', 'btn-danger', 'mt-2');
-                removeButton.textContent = 'Remove';
-                removeButton.onclick = () => removeEvent(index);
-
-                cardBody.appendChild(cardTitle);
-                cardBody.appendChild(cardDetails);
-                cardBody.appendChild(cardDate);
-                cardBody.appendChild(cardPlace);
-                cardBody.appendChild(cardPhoto);
-                cardBody.appendChild(removeButton);
-                eventCard.appendChild(cardBody);
-
-                eventDisplay.appendChild(eventCard);
-            });
-        }
-        function removeEvent(index) {
-            events.splice(index, 1);
-            displayEvents();
-            displayMap();
-        }
-        function resetForm() {
-            document.getElementById('eventName').value = '';
-            document.getElementById('eventDetails').value = '';
-            document.getElementById('eventDate').value = '';
-            document.getElementById('eventPhoto').value = '';
-            document.getElementById('eventPlace').value = '';
-        }
-    </script>
+        <script src="community.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

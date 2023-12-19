@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SparkPlug Foundation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel ="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <span class="navbar-brand">
+                <img src="logo-1.png" alt="Company Logo">
+                SparkPlug Foundation
+            </span>
+            <span class="user-profile">
+                <img src="user.png" alt="admin">
+            </span>
+            <div class="menu-btn">&#9776;</div>
+        </div>
+    </nav>
+
+    <!-- Wrapper for Sidebar and Content -->
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <a href="#">Dashboard</a>
+            <a href="#">User & Profiles</a>
+            <a href="#">Children</a>
+            <a href="#">Volunteers</a>
+            <a href="#">Donations</a>
+            <a href="#events">Events</a>
+            <a href="#community">Community</a>
+            <a href="#partners">Partners</a>
+            <a href="#settings">Settings</a>
+        </div>
+
+        <!--Event Content -->
+        <div class="sub-content">
+            <section id="events">
+                <div class="container">
+                    <div class="row">           
+                      <div class="col-md-8">    
+                            <div class="card mt-4">
+                                <div class="card-body">
+                                    <h5 class="card-title">Add New Event</h5>
+                                    <div class="form-group">
+                                        <label for="eventName">Event Name</label>
+                                        <input type="text" class="form-control" id="eventName" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="eventDetails">Event Details</label>
+                                        <textarea class="form-control" id="eventDetails" rows="3" required></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="eventDate">Event Date</label>
+                                        <input type="date" class="form-control" id="eventDate" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="eventPhoto">Event Photo</label>
+                                        <input type="file" class="form-control-file" id="eventPhoto">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="eventPlace">Event Place/Address</label>
+                                        <input type="text" class="form-control" id="eventPlace" required>
+                                    </div>
+                                    <button type="button" class="btn btn-primary" onclick="addEvent()">Add Event</button>
+                                </div>
+                            </div>
+            
+                            <h2 class="mt-4">Event Locations</h2>
+                            <div id="map"></div>          
+                            <div id="eventDisplay" class="mt-4"></div>
+                        </div>         
+                        <div class="col-md-4">
+                            <h5>History</h5>
+                            <iframe title= "history" id="eventHistory" frameborder="0" scrolling="auto"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        <!-- Community -->
+        <section id="community">
+            <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Community</h5>
+                    <form id="communityForm">
+                        <div class="form-group">
+                            <label for="communityName">Community Activities/Project</label>
+                            <input type="text" class="form-control" id="communityName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="communityDetails">Community Details</label>
+                            <textarea class="form-control" id="communityDetails" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="communityDate">Project Date</label>
+                            <input type="date" class="form-control" id="communityDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="communityPhoto">Community Photo</label>
+                            <input type="file" class="form-control-file" id="communityPhoto">
+                        </div>
+                        <div class="form-group">
+                            <label for="communityPlace">Activity Place/Address</label>
+                            <input type="text" class="form-control" id="communityPlace" required>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="addCommunity()">Submit</button>
+                    </form>
+                        </div>
+                    </div>
+                 <div id="communityDisplay"></div>
+                </div>
+        </section>
+            
+
+        <!-- Partner -->
+        
+        <section id="partners">
+        <h2>Partner's Settings</h2>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Add New Partner</h5>
+                        <form id="partnerForm">
+                            <div class="form-group">
+                                <label for="partnerName">Partner's Name</label>
+                                <input type="text" class="form-control" id="partnerName" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="partnerDetails">Partner's Details</label>
+                                <textarea class="form-control" id="partnerDetails" rows="3" required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="partnerPhoto">Partner's Photo/ Logo</label>
+                                <input type="file" class="form-control-file" id="partnerPhoto">
+                            </div>
+
+                            <button type="button" class="btn btn-primary" onclick="addPartner()">Add Partner</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+        <div class="col-md-4">
+        <div id="partnersDisplay"></div>
+        </div>
+        </div>
+        </section>
+    
+        <!-- Settings -->
+            
+                <section id="settings">
+                    <div class="row">
+                        <div class="col-md-8">
+                    <h3>Settings</h3>
+                    <form id="foundationSettingsForm">
+                        <div class="form-group">
+                            <label for="foundationName">Foundation Name</label>
+                            <input type="text" class="form-control" id="foundationName" required>
+                        </div>
+            
+                        <div class="form-group">
+                            <label for="foundationAddress">Foundation Address</label>
+                            <input type="text" class="form-control" id="foundationAddress" required>
+                        </div>
+            
+                        <div class="form-group">
+                            <label for="contactDetails">Contact Details</label>
+                            <input type="text" class="form-control" id="contactDetails" required>
+                        </div>
+            
+                        <div class="form-group">
+                            <label for="socialMedia">Social Media Links</label>
+                            <input type="text" class="form-control" id="socialMedia" required>
+                        </div>
+            
+                        <div class="form-group">
+                            <label for="websiteDetails">Website Details</label>
+                            <input type="text" class="form-control" id="websiteDetails" required>
+                        </div>
+            
+                        <button type="button" class="btn btn-primary" onclick="saveFoundationSettings()">Save Foundation Settings</button>
+                    </form>
+                    <form id="themeSettingsForm">
+                        <h4 class="mt-4">Theme Settings</h4>
+                        <div class="form-group">
+                            <label for="theme">Select Theme</label>
+                            <select class="form-control" id="theme">
+                                <option value="light">Light</option>
+                                <option value="dark">Dark</option>
+                            </select>
+                        </div>
+            
+                        <button type="button" class="btn btn-primary" onclick="saveThemeSettings()">Save Theme Settings</button>
+                    </form>
+                </div>
+                <div class="modal" tabindex="-1" role="dialog" id="errorModal">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Error</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="errorModalBody">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal" tabindex="-1" role="dialog" id="successModal">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Success</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="successModalBody">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </div>
+            </section>
+                <script src="settings.js"></script>
+                <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        </div>
+        </div>
+
+    <script>
+        const events = [];
+        function addEvent() {
+            const eventName = document.getElementById('eventName').value;
+            const eventDetails = document.getElementById('eventDetails').value;
+            const eventDate = document.getElementById('eventDate').value;
+            const eventPhoto = document.getElementById('eventPhoto').files[0];
+            const eventPlace = document.getElementById('eventPlace').value;
+
+            if (eventName && eventDetails && eventDate && eventPhoto && eventPlace) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    const newEvent = {
+                        name: eventName,
+                        details: eventDetails,
+                        date: eventDate,
+                        photo: e.target.result,
+                        place: eventPlace
+                    };
+                    events.unshift(newEvent); 
+                    displayEvents();
+                    displayMap();
+                    updateEventHistory();
+                    resetForm();
+                };
+                reader.readAsDataURL(eventPhoto);
+            } else {
+                alert('Please enter event name, details, date, select a photo, and place/address.');
+            }
+        }
+        function displayEvents() {
+            const eventDisplay = document.getElementById('eventDisplay');
+            eventDisplay.innerHTML = '';
+
+            events.forEach((event, index) => {
+                const eventCard = document.createElement('div');
+                eventCard.classList.add('card', 'event-card');
+
+                const cardBody = document.createElement('div');
+                cardBody.classList.add('card-body');
+
+                const cardTitle = document.createElement('h5');
+                cardTitle.classList.add('card-title');
+                cardTitle.textContent = event.name;
+
+                const cardDetails = document.createElement('p');
+                cardDetails.classList.add('card-text');
+                cardDetails.textContent = event.details;
+
+                const cardDate = document.createElement('p');
+                cardDate.classList.add('card-text');
+                cardDate.textContent = `Date: ${event.date}`;
+
+                const cardPlace = document.createElement('p');
+                cardPlace.classList.add('card-text');
+                cardPlace.textContent = `Place: ${event.place}`;
+
+                const cardPhoto = document.createElement('img');
+                cardPhoto.classList.add('card-img-top', 'mt-2');
+                cardPhoto.src = event.photo;
+                cardPhoto.alt = event.name;
+
+                const removeButton = document.createElement('button');
+                removeButton.classList.add('btn', 'btn-danger', 'mt-2');
+                removeButton.textContent = 'Remove';
+                removeButton.onclick = () => removeEvent(index);
+
+                cardBody.appendChild(cardTitle);
+                cardBody.appendChild(cardDetails);
+                cardBody.appendChild(cardDate);
+                cardBody.appendChild(cardPlace);
+                cardBody.appendChild(cardPhoto);
+                cardBody.appendChild(removeButton);
+                eventCard.appendChild(cardBody);
+
+                eventDisplay.appendChild(eventCard);
+            });
+        }
+        function removeEvent(index) {
+            events.splice(index, 1);
+            displayEvents();
+            displayMap();
+            updateEventHistory();
+        }
+        function resetForm() {
+            document.getElementById('eventName').value = '';
+            document.getElementById('eventDetails').value = '';
+            document.getElementById('eventDate').value = '';
+            document.getElementById('eventPhoto').value = '';
+            document.getElementById('eventPlace').value = '';
+        }
+        function displayMap() {
+            const mapDiv = document.getElementById('map');
+
+            const map = new google.maps.Map(mapDiv, {
+                center: { lat: 0, lng: 0 },
+                zoom: 2
+            });
+
+            events.forEach(event => {
+                const geocoder = new google.maps.Geocoder();
+
+                geocoder.geocode({ address: event.place }, (results, status) => {
+                    if (status === 'OK' && results[0].geometry) {
+                        const marker = new google.maps.Marker({
+                            map: map,
+                            position: results[0].geometry.location,
+                            title: event.name
+                        });
+                    } else {
+                        console.error('Geocode was not successful for the following reason:', status);
+                    }
+                });
+            });
+        }
+        function updateEventHistory() {
+            const eventHistoryFrame = document.getElementById('eventHistory');
+            const eventHistoryContent = events.map(event => `${event.date} - ${event.name} - ${event.details} - ${event.place} `).join('<br>');
+            eventHistoryFrame.contentDocument.body.innerHTML = eventHistoryContent;
+        }
+    </script>
+    <!--Google Map API script -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsza5MuJxUvgRNiTfmorQJC-hQSblGr6g&callback=initMap"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.menu-btn').click(function () {
+                $('.sidebar').css('left', '0');
+            });
+
+            $('.content').click(function () {
+                $('.sidebar').css('left', '-100%');
+            });
+        });
+    </script>
+</body>
+</html>
