@@ -16,9 +16,13 @@
                 <img src="logo-1.png" alt="Company Logo">
                 SparkPlug Foundation
             </span>
-            <span class="user-profile">
+            <span class="user-profile" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img src="user.png" alt="admin">
             </span>
+            <div class="dropdown-menu profile-dropdown-menu" aria-labelledby="profileDropdown">
+                <a class="dropdown-item" href="#">Edit Profile</a>
+                <a class="dropdown-item" href="#">Logout</a>
+            </div>
             <div class="menu-btn">&#9776;</div>
         </div>
     </nav>
@@ -37,23 +41,24 @@
             <a href="#partners">Partners</a>
             <a href="#settings">Settings</a>
         </div>
-
-        <!-- Donation -->
-        <div class="sub-content">
+                     <!-- Donation -->
+    <div class="sub-content">
             <section id="donation">
             <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <form id="donationForm">
-                        <div class="form-group">
-                            <label for="donorName">Donor's Name:</label>
-                            <input type="text" class="form-control" id="donorName" required>
-                        </div>
-                        <div class="form-group">
+                    <div class="card mt-2">
+                        <div class="card-body">
+                            <h3 class="card-title">Donor's Settings</h3>
+                            <div class="form-group">
+                                <label for="donorName">Donor's Name:</label>
+                                <input type="text" class="form-control" id="donorName" required>
+                            </div>
+                            <div class="form-group">
                             <label for="donationAmount">Donation Amount:</label>
                             <input type="number" class="form-control" id="donationAmount" min="0" required>
-                        </div>
-                        <div class="form-group">
+                            </div>
+                            <div class="form-group">
                             <label for="donationType">Donation Type:</label>
                             <select class="form-control" id="donationType" required>
                                 <optgroup label="E-wallet">
@@ -68,28 +73,31 @@
                                     <option value="BDO">BDO</option>
                                 </optgroup>
                             </select>
-                        </div>
-                        <button type="button" class="btn btn-primary" onclick="recordDonation()">Record Donation</button>
-                    </form>
-    
-                    <div id="report">
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="recordDonation()">Record Donation</button>
+                        
+                        <div id="report">
                         <h4>Donation Report</h4>
                         <p>Total Amount Donated: $<span id="totalAmount">0.00</span></p>
                         <p>Donation Types:</p>
                         <ul id="donationTypes">
                             <!-- Donation types will be dynamically added here -->
                         </ul>
+                        </div>
+                        </div> 
                     </div>
-                </div>
-                
-                <div class="col-md-3" id="sidebarDonation">
+                 </div>
+                 <div class="col-md-3" id="sidebarDonation">
                     <h4>History</h4>
                     <iframe id="donationFrame" title="donation"></iframe>
                 </div>
+                
             </div>
-        
-        <!--Event Content -->
-            <section id="events">
+            </div>
+            </section>
+                        <!--Event Content -->
+            <section id="events" >
+                <div class="container" id="eventContainer">
                     <div class="row">           
                       <div class="col-md-8">    
                             <div class="card mt-2">
@@ -118,10 +126,14 @@
                                     <button type="button" class="btn btn-primary" onclick="addEvent()">Add Event</button>
                                 </div>
                             </div>
-            
+                            
                             <h2 class="mt-4">Event Locations</h2>
+                
+                                <div class="col-md-5">
                             <div id="map"></div>          
                             <div id="eventDisplay" class="mt-4"></div>
+                            </div>
+                            
                         </div>         
                         <div class="col-md-3" id="sidebarPartner">
                             <!-- frameborder="1" scrolling="auto" -->
@@ -129,125 +141,124 @@
                             <iframe title= "history" id="eventFrame"></iframe>
                         </div>
                     </div>
+                </div>
             </section>
-            <!-- Community -->
+                        <!-- Community -->
             <section id="community">
-            <div class="col-md-8">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Community</h5>
-                    <form id="communityForm">
-                        <div class="form-group">
+            <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="card mt-2">
+                        <div class="card-body">
+                            <h5 class="card-title">Community</h5>
+                        <form id="communityForm">
+                            <div class="form-group">
                             <label for="communityName">Community Activities/Project</label>
                             <input type="text" class="form-control" id="communityName" required>
-                        </div>
-                        <div class="form-group">
+                            </div>
+                            <div class="form-group">
                             <label for="communityDetails">Community Details</label>
                             <textarea class="form-control" id="communityDetails" rows="3" required></textarea>
-                        </div>
-                        <div class="form-group">
+                            </div>
+                            <div class="form-group">
                             <label for="communityDate">Project Date</label>
                             <input type="date" class="form-control" id="communityDate" required>
-                        </div>
-                        <div class="form-group">
+                            </div>
+                            <div class="form-group">
                             <label for="communityPhoto">Community Photo</label>
                             <input type="file" class="form-control-file" id="communityPhoto">
-                        </div>
-                        <div class="form-group">
+                            </div>
+                            <div class="form-group">
                             <label for="communityPlace">Activity Place/Address</label>
                             <input type="text" class="form-control" id="communityPlace" required>
-                        </div>
-                        <button type="button" class="btn btn-primary" onclick="addCommunity()">Submit</button>
-                    </form>
-                        </div>
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="addCommunity()">Submit</button>
+                        </form>
                     </div>
+                </div>
                  <div id="communityDisplay"></div>
                 </div>
+            </div>
+            </div>
          </section>
-            <!-- Partner -->
-            <section id="partners">
-            <h2>Partner's Settings</h2>
+                        <!-- Partner -->
+        <section id="partners">
+            <div class="container">
             <div class="row">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Add New Partner</h5>
+                <div class="col-md-10">
+                    <div class="card mt-2">
+                        <div class="card-body">
+                            <h5 class="card-title">Add New Partner</h5>
                         <form id="partnerForm">
                             <div class="form-group">
                                 <label for="partnerName">Partner's Name</label>
                                 <input type="text" class="form-control" id="partnerName" required>
                             </div>
-
                             <div class="form-group">
                                 <label for="partnerDetails">Partner's Details</label>
                                 <textarea class="form-control" id="partnerDetails" rows="3" required></textarea>
                             </div>
-
                             <div class="form-group">
                                 <label for="partnerPhoto">Partner's Photo/ Logo</label>
                                 <input type="file" class="form-control-file" id="partnerPhoto">
                             </div>
-
                             <button type="button" class="btn btn-primary" onclick="addPartner()">Add Partner</button>
                         </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-            </div>
             <div class="row">
                 <div class="col-md-4">
                 <div id="partnersDisplay"></div>
             </div>
             </div>
+            </div>
+            </div>
             </section>
-    
-             <!-- Settings -->
-            
-                <section id="settings">
+                        <!-- Settings -->
+            <section id="settings">
+                <div class="container">
                     <div class="row">
-                        <div class="col-md-8">
-                    <h3>Settings</h3>
-                    <form id="foundationSettingsForm">
-                        <div class="form-group">
-                            <label for="foundationName">Foundation Name</label>
-                            <input type="text" class="form-control" id="foundationName" required>
-                        </div>
-            
-                        <div class="form-group">
-                            <label for="foundationAddress">Foundation Address</label>
-                            <input type="text" class="form-control" id="foundationAddress" required>
-                        </div>
-            
-                        <div class="form-group">
-                            <label for="contactDetails">Contact Details</label>
-                            <input type="text" class="form-control" id="contactDetails" required>
-                        </div>
-            
-                        <div class="form-group">
-                            <label for="socialMedia">Social Media Links</label>
-                            <input type="text" class="form-control" id="socialMedia" required>
-                        </div>
-            
-                        <div class="form-group">
+                        <div class="col-md-10">
+                            <div class="card mt-2">
+                                <div class="card-body">
+                                    <h3>Settings</h3>
+                                <div class="form-group">
+                                <label for="foundationName">Foundation Name</label>
+                                <input type="text" class="form-control" id="foundationName" required>
+                                </div>
+                                <div class="form-group">
+                                <label for="foundationAddress">Foundation Address</label>
+                                <input type="text" class="form-control" id="foundationAddress" required>
+                                </div>
+                                <div class="form-group">
+                                <label for="contactDetails">Contact Details</label>
+                                <input type="text" class="form-control" id="contactDetails" required>
+                                </div>
+                                <div class="form-group">
+                                <label for="socialMedia">Social Media Links</label>
+                                <input type="text" class="form-control" id="socialMedia" required>
+                                </div>
+                            <div class="form-group">
                             <label for="websiteDetails">Website Details</label>
                             <input type="text" class="form-control" id="websiteDetails" required>
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="saveFoundationSettings()">Save Foundation Settings</button>   
+                                     <h4 class="mt-4">Theme Settings</h4>
+                                    <div class="form-group">
+                                    <label for="theme">Select Theme</label>
+                                        <select class="form-control" id="theme">
+                                            <option value="light">Light</option>
+                                            <option value="dark">Dark</option>
+                                        </select>
+                                    </div>
+                            <button type="button" class="btn btn-primary" onclick="saveThemeSettings()">Save Theme Settings</button>
+                            </div>
+                            </div>
                         </div>
-            
-                        <button type="button" class="btn btn-primary" onclick="saveFoundationSettings()">Save Foundation Settings</button>
-                    </form>
-                    <form id="themeSettingsForm">
-                        <h4 class="mt-4">Theme Settings</h4>
-                        <div class="form-group">
-                            <label for="theme">Select Theme</label>
-                            <select class="form-control" id="theme">
-                                <option value="light">Light</option>
-                                <option value="dark">Dark</option>
-                            </select>
-                        </div>
-            
-                        <button type="button" class="btn btn-primary" onclick="saveThemeSettings()">Save Theme Settings</button>
-                    </form>
+                    </div>
                 </div>
+            </section>
                 <div class="modal" tabindex="-1" role="dialog" id="errorModal">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">

@@ -24,9 +24,22 @@ body {
     border-radius: 50%;
     margin-right: 10px;
 }
+.navbar-toggler-icon {
+    background-color: #e0dada; /* Adjust the background color of the toggler icon */
+}
+
+.navbar-toggler:focus {
+    outline: none;
+}
+.profile-dropdown-menu {
+    right: 0;
+    left: auto;
+    background-color: #007bff;
+}
 .user-profile {
     width: 40px;
     height: 40px;
+    cursor: pointer;
     border-radius: 50%;
     overflow: hidden;
 }
@@ -37,15 +50,15 @@ body {
 }
 .wrapper {
     display: flex;
-    height: 100vh;
+    /* height: 100vh; */
 }
 .sidebar {
     position: fixed;
     height: 100%;
     width: 250px;
     background-color: #343a40;
-    padding-top: 60px;
-    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+    padding-top: 80px;
+    box-shadow: 2px 0 4px rgba(190, 13, 13, 0.1);
     z-index: 1;
 }
 .sidebar a {
@@ -60,43 +73,54 @@ body {
     background-color: #007bff;
 }
 .sub-content{
-    padding-left: 20%;
+    padding-left: 15%;
+    margin-top: 2rem;
+    width: 100%;
     margin: 40px 0 10px;
 }
 section {  
     padding-top: 10%;
+    padding-bottom: 5%;
     color: rgb(12, 24, 133);
     height: 100vh;
     text-align: justify;
-    margin-right: 20px;
-}
-.container {
-    margin-top: 50px;
-}
-.row {
-    margin-top: 20px;
-}
-.col-md-8 {
-    border-right: 2px solid #ddd;
-    width: 50vw;
+    width: 100%;
+    margin-bottom: 20px;
 }
 .form-group {
+    margin-bottom: 20px;
+}
+.container{
+    margin-top: 15px;
+}
+.row {
     margin-bottom: 20px;
 }
 #report {
     margin-top: 30px;
 }
 #donationFrame {
-    height: 100%;
+    height: 40vh;
 }
 #eventFrame{
-    height: 100%;
+    height: 40vh;
+}
+.event-card {
+    margin-bottom: 20px;
+}
+#eventHistory {
+    height: 400px;
+    width: 100%;
+    border: 1px solid #ddd;
 }
 #sidebarPartner{
     margin-bottom: 30px;
 }
-#eventDisplay{
-    margin-bottom: 40px;
+.col-md-8{
+    margin-bottom: 3vh;
+}
+.col-md-10{
+    margin-bottom: 3vh;
 }
 #community{
     margin-top: 50px;

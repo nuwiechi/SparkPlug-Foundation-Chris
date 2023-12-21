@@ -49,6 +49,9 @@ function addEvent() {
     const eventDate = document.getElementById('eventDate').value;
     const eventPhoto = document.getElementById('eventPhoto').files[0];
     const eventPlace = document.getElementById('eventPlace').value;
+    const eventContainer = document.getElementById('eventContainer');
+    const newHeight = eventContainer.clientHeight + 20; // Increase by 20 pixels
+    eventContainer.style.height = `${newHeight}px`;
 
     if (eventName && eventDetails && eventDate && eventPhoto && eventPlace) {
         const reader = new FileReader();
