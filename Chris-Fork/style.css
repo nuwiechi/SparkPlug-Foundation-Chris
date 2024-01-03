@@ -108,10 +108,14 @@ section {
 .event-card {
     margin-bottom: 20px;
 }
+#map {
+    height: 300px;
+}
 #eventHistory {
     height: 400px;
     width: 100%;
     border: 1px solid #ddd;
+    
 }
 #sidebarPartner{
     margin-bottom: 30px;
@@ -123,7 +127,14 @@ section {
     margin-bottom: 3vh;
 }
 #community{
-    margin-top: 50px;
+    margin-top: 100vh;
+
+}
+#partners{
+    margin-top: 100vh;
+}
+#settings{
+    margin-top: 50vh;
 }
 @media screen and (max-width: 768px) {
     .wrapper {
