@@ -25,7 +25,7 @@ body {
     margin-right: 10px;
 }
 .navbar-toggler-icon {
-    background-color: #e0dada; /* Adjust the background color of the toggler icon */
+    background-color: #06053f; /* Adjust the background color of the toggler icon */
 }
 
 .navbar-toggler:focus {
@@ -101,6 +101,8 @@ section {
 }
 #donationFrame {
     height: 40vh;
+    width: 100%;
+    border: 1px solid #030531;
 }
 #eventFrame{
     height: 40vh;
@@ -112,9 +114,9 @@ section {
     height: 300px;
 }
 #eventHistory {
-    height: 400px;
+    height: 40vh;
     width: 100%;
-    border: 1px solid #ddd;
+    border: 1px solid #030531;
     
 }
 #sidebarPartner{
